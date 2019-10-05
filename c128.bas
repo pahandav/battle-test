@@ -1,270 +1,347 @@
-1 rem randomization routine
-2 input "80-columns?"; a$
-3 z=rnd(-ti)
-4 if a$<>"y" then 7
-5 graphic 5
-6 fast
-7 rem clear screen routine
-8 print chr$(147)
-10 rem variables
-20 z=0
-30 y=1
-40 a=z
-50 t=z
-60 v=13
-70 c=44
-80 d=z
-90 e=z
-100 r=z
-110 x=2
-120 i=z
-130 j=z
-140 dim a(c)
-150 g=100
-160 h=4
-170 k=512
-180 l=32
-190 u=16
-200 n=255
-210 o=99
-220 f=65535
-230 q=6
-240 s=3841
-250 b=4096
-260 m=39
-270 p=y
-280 w=z
-290 for i=z to c
-300 read a(i)
-310 next i
-320 print "welcome to the battle system test!"
-330 print
-340 print
-350 print "two soldiers approach."
-360 print
-370 rem main loop
-380 if a(v*a)=z then 420
-390 if a=z then 780
-400 t=z
-410 goto 1190
-420 rem iterate attacker
-430 if a(z)=z then 2410
-440 a=a+y
-450 if a<>z then t=z
-460 if a(v*a)=z then a=a+y
-470 if a>x then a=z
-480 d=z
-490 if a(v*y)=z then d=d+y
-500 if a(v*x)=z then d=d+y
-510 if d=x then 530
-520 goto 370
-530 rem new game
-540 print "you are victorious."
-550 print
-560 w=w+y
-570 a=z
-580 t=z
-590 if w>=10 then gosub 690
-600 for i=y to x
-610 a(i*v)=a(i*v+y)
-620 next i
-630 gosub 2090
-640 if r<12.5 then print "you obtained a potion!"
-650 if r<12.5 then print
-660 if r<12.5 then p=p+y
-670 if p>o then p=o
-680 goto 350
-690 rem increase difficulty
-700 gosub 2090
-710 if r>=25 then return
-720 for i=v to m-y
-730 a(i)=a(i)*1.5
-740 next i
-750 print "the enemies have powered up!"
-760 print
-770 return
-780 rem menu loop
-790 print
-800 print a(z);"/";a(y);"hp"
-810 print a(x);"/";a(3);"mp"
-820 print
-830 print "(a) attack"
-840 print "(m) magic"
-850 print "(i) items"
-860 print "(q) quit"
-870 get a$
-871 if a$="" then 870
-880 if a$="a" or a$="a" then 930
-890 if a$="m" or a$="m" then 990
-900 if a$="i" or a$="i" then 1100
-910 if a$="q" or a$="q" then 2480
-920 goto 780
-930 rem attack input routine
-940 gosub 2120
-950 if c=z then 780
-960 if c>x then 930
-970 if c<z then 930
-980 goto 1190
-990 rem magic input routine
-1000 print
-1010 print "(1) lightning -";a(m);"mp"
-1020 print "(2) cure -";a(m+3);"mp"
-1030 print "which spell do you want to cast?"
-1040 print "type (0) to go back."
-1050 get a$
-1051 if a$="" then 1050
-1052 c=val(a$)
-1060 if c=y then 1630
-1070 if c=x then 1850
-1080 if c=z then 780
-1090 goto 990
-1100 rem item routine
-1110 print
-1120 print "(1) potion -";p
-1130 print "which item do you wish to use?"
-1140 print "type (0) to go back."
-1150 get a$
-1151 if a$="" then 1150
-1152 c=val(a$)
-1160 if c=y then 1980
-1170 if c=z then 780
-1180 goto 1100
-1190 rem attack routine
-1200 c=((a(a*v+10)/h)+(a(a*v+5)))+a(a*v+7)-a(t*v+7)
-1210 gosub 2090
-1220 i=a(a*v+11)
-1230 gosub 2270
-1240 if d>r then c=n
-1250 i=a(t*v+11)
-1260 gosub 2270
-1270 if d>r then c=n
-1280 if r<c then 1330
-1290 if t>z then print "your attack missed!"
-1300 if t=z then print "soldier";a;"missed you!"
-1310 print
-1320 goto 420
-1330 rem physical damage routine
-1340 d=a(a*v+h)
-1350 e=a(a*v+12)
-1360 c=d+((d+e)/l)*((d*e)/l)
-1370 d=((u*(k-a(t*v+q)))*c)/(u*k)
-1380 c=(a(a*v+11)+a(a*v+12)-a(t*v+12))/h
-1390 gosub 2300
-1400 if r<=c then 1420
-1410 goto 1440
-1420 rem critical hit damage
-1430 d=int(d*x)
-1440 rem random damage variation
-1450 d=int(d*(s+(rnd(y)*n))/b)
-1460 if d=z then d=y
-1470 a(t*v)=a(t*v)-d
-1480 if a(t*v)<=z then a(t*v)=z
-1490 if a<>z then 1560
-1500 print "you hit soldier";t;"for";d;"hp."
-1510 print
-1520 if a(t*v)<>z then 1550
-1530 print "you defeated soldier";t
-1540 print
-1550 goto 420
-1560 if d>z then gosub 2330
-1570 print "soldier";a;"hit you for";d;"hp."
-1580 print
-1590 if a(z)<>z then 1620
-1600 print "you died."
-1610 print
-1620 goto 420
-1630 rem lightning routine
-1640 e=z
-1650 d=z
-1660 if a(m)>a(x) then 1810
-1670 a(x)=a(x)-a(m)
-1680 gosub 2120
-1690 if c=z then 990
-1700 if c>x then 1630
-1710 if c<z then 1630
-1720 c=a(m+x)+a(a*v+12)-((a(t*v+12))/x)-y
-1730 gosub 2090
-1740 if r<c then gosub 2380
-1750 if r>c then 1770
-1760 d=(a(m+y)*(k-a(t*v+9))*c)/(u*k)
-1770 if d>z then 1440
-1780 print "your spell missed."
-1790 print
-1800 goto 420
-1810 rem not enough mp routine
-1820 print
-1830 print "you don't have enough mp to cast that spell."
-1840 goto 990
-1850 rem cure routine
-1860 e=3
-1870 if a(m+3)>a(x) then 1810
-1880 a(x)=a(x)-a(m+3)
-1890 gosub 2380
-1900 d=c+22*a(m+y+e)
-1910 d=int(d*(s+(rnd(y)*n))/b)
-1920 print
-1930 print "you have been healed for";d;"hp."
-1940 print
-1950 a(z)=a(z)+d
-1960 if a(z)>a(y) then a(z)=a(y)
-1970 goto 420
-1980 rem item routine
-1990 if p=z then print
-2000 if p=z then print "you have no potions."
-2010 if p=z then 780
-2020 a(z)=a(z)+g
-2030 if a(z)>a(y) then a(z)=a(y)
-2040 p=p-y
-2050 print
-2060 print "you have been healed for 100 hp."
-2070 print
-2080 goto 420
-2090 rem random 100 routine
-2100 r=int(rnd(y)*g)
-2110 return
-2120 rem shared input routine
-2130 print
-2140 for i=y to x
-2150 if a(v*i)>z then print "(";i;")";" soldier";i
-2160 next i
-2170 print "which enemy do you want to target?"
-2180 print "(0) to go back."
-2190 get a$
-2191 if a$="" then 2190
-2192 c=val(a$)
-2200 if c=z then return
-2210 e=z
-2220 if a(v*c)<=z then e=n
-2230 if e=n then 2120
-2240 t=c
-2250 print
-2260 return
-2270 rem lucky hit routine
-2280 d=i/h
-2290 return
-2300 rem random 65535 routine
-2310 r=((rnd(y)*f)*o/f)+y
-2320 return
-2330 rem ding routine
-2340 for j=z to g
-2350 next j
-2360 print chr$(7)
-2370 return
-2380 rem magic damage routine
-2390 c=q*(a(8)+a(12))
-2400 return
-2410 rem game over routine
-2420 print
-2430 print "game over"
-2440 print
-2450 for i=z to y
-2460 gosub 2330
-2470 next i
-2480 print
-2490 print "you won";w;"times."
-2500 print
-2510 end
-2520 data 314,314,54,54,38,96,24,1,21,17,6,14,6
-2530 data 30,30,0,0,6,1,4,1,1,1,50,4,2
-2540 data 30,30,0,0,6,1,4,1,1,1,50,4,2
-2550 data 4,8,100,5,5,255
+' RANDOMIZATION ROUTINE
+INPUT "80-COLUMNS?"; A$
+Z=RND(-TI)
+IF A$<>"Y" THEN @7
+GRAPHIC 5
+FAST
+@7
+' CLEAR SCREEN ROUTINE
+PRINT CHR$(147)
+' VARIABLES
+Z=0
+Y=1
+A=Z
+T=Z
+V=13
+C=44
+D=Z
+E=Z
+R=Z
+X=2
+I=Z
+J=Z
+DIM A(C)
+G=100
+H=4
+K=512
+L=32
+U=16
+N=255
+O=99
+F=65535
+Q=6
+S=3841
+B=4096
+M=39
+P=Y
+W=Z
+FOR I=Z TO C
+READ A(I)
+NEXT I
+PRINT "WELCOME TO THE BATTLE SYSTEM TEST!"
+PRINT
+PRINT
+@350
+PRINT "TWO SOLDIERS APPROACH."
+PRINT
+@370
+' MAIN LOOP
+IF A(V*A)=Z THEN @420
+IF A=Z THEN @780
+T=Z
+GOTO @1190
+@420
+' ITERATE ATTACKER
+IF A(Z)=Z THEN @2410
+A=A+Y
+IF A<>Z THEN T=Z
+IF A(V*A)=Z THEN A=A+Y
+IF A>X THEN A=Z
+D=Z
+IF A(V*Y)=Z THEN D=D+Y
+IF A(V*X)=Z THEN D=D+Y
+IF D=X THEN @530
+GOTO @370
+@530
+' NEW GAME
+PRINT "YOU ARE VICTORIOUS."
+PRINT
+W=W+Y
+A=Z
+T=Z
+IF W>=10 THEN GOSUB @690
+FOR I=Y TO X
+A(I*V)=A(I*V+Y)
+NEXT I
+GOSUB @2090
+IF R<12.5 THEN PRINT "YOU OBTAINED A POTION!"
+IF R<12.5 THEN PRINT
+IF R<12.5 THEN P=P+Y
+IF P>O THEN P=O
+GOTO @350
+@690
+' INCREASE DIFFICULTY
+GOSUB @2090
+IF R>=25 THEN RETURN
+FOR I=V TO M-Y
+A(I)=A(I)*1.5
+NEXT I
+PRINT "THE ENEMIES HAVE POWERED UP!"
+PRINT
+RETURN
+@780
+' MENU LOOP
+PRINT
+PRINT A(Z);"/";A(Y);"HP"
+PRINT A(X);"/";A(3);"MP"
+PRINT
+PRINT "(A) ATTACK"
+PRINT "(M) MAGIC"
+PRINT "(I) ITEMS"
+PRINT "(Q) QUIT"
+@870
+GET A$
+IF A$="" THEN @870
+IF A$="A" OR A$="A" THEN @930
+IF A$="M" OR A$="M" THEN @990
+IF A$="I" OR A$="I" THEN @1100
+IF A$="Q" OR A$="Q" THEN @2480
+GOTO @780
+@930
+' ATTACK INPUT ROUTINE
+GOSUB @2120
+IF C=Z THEN @780
+IF C>X THEN @930
+IF C<Z THEN @930
+GOTO @1190
+@990
+' MAGIC INPUT ROUTINE
+PRINT
+PRINT "(1) LIGHTNING -";A(M);"MP"
+PRINT "(2) CURE -";A(M+3);"MP"
+PRINT "WHICH SPELL DO YOU WANT TO CAST?"
+PRINT "TYPE (0) TO GO BACK."
+@1050
+GET A$
+IF A$="" THEN @1050
+C=VAL(A$)
+IF C=Y THEN @1630
+IF C=X THEN @1850
+IF C=Z THEN @780
+GOTO @990
+@1100
+' ITEM ROUTINE
+PRINT
+PRINT "(1) POTION -";P
+PRINT "WHICH ITEM DO YOU WISH TO USE?"
+PRINT "TYPE (0) TO GO BACK."
+@1150
+GET A$
+IF A$="" THEN @1150
+C=VAL(A$)
+IF C=Y THEN @1980
+IF C=Z THEN @780
+GOTO @1100
+@1190
+' ATTACK ROUTINE
+C=((A(A*V+10)/H)+(A(A*V+5)))+A(A*V+7)-A(T*V+7)
+GOSUB @2090
+I=A(A*V+11)
+GOSUB @2270
+IF D>R THEN C=N
+I=A(T*V+11)
+GOSUB @2270
+IF D>R THEN C=N
+IF R<C THEN @1330
+IF T>Z THEN PRINT "YOUR ATTACK MISSED!"
+IF T=Z THEN PRINT "SOLDIER";A;"MISSED YOU!"
+PRINT
+GOTO @420
+@1330
+' PHYSICAL DAMAGE ROUTINE
+D=A(A*V+H)
+E=A(A*V+12)
+C=D+((D+E)/L)*((D*E)/L)
+D=((U*(K-A(T*V+Q)))*C)/(U*K)
+C=(A(A*V+11)+A(A*V+12)-A(T*V+12))/H
+GOSUB @2300
+IF R<=C THEN @1420
+GOTO @1440
+@1420
+' CRITICAL HIT DAMAGE
+D=INT(D*X)
+@1440
+' RANDOM DAMAGE VARIATION
+D=INT(D*(S+(RND(Y)*N))/B)
+IF D=Z THEN D=Y
+A(T*V)=A(T*V)-D
+IF A(T*V)<=Z THEN A(T*V)=Z
+IF A<>Z THEN @1560
+PRINT "YOU HIT SOLDIER";T;"FOR";D;"HP."
+PRINT
+IF A(T*V)<>Z THEN @1550
+PRINT "YOU DEFEATED SOLDIER";T
+PRINT
+@1550
+GOTO @420
+@1560
+IF D>Z THEN GOSUB @2330
+PRINT "SOLDIER";A;"HIT YOU FOR";D;"HP."
+PRINT
+IF A(Z)<>Z THEN @1620
+PRINT "YOU DIED."
+PRINT
+@1620
+GOTO @420
+@1630
+' LIGHTNING ROUTINE
+E=Z
+D=Z
+IF A(M)>A(X) THEN @1810
+A(X)=A(X)-A(M)
+GOSUB @2120
+IF C=Z THEN @990
+IF C>X THEN @1630
+IF C<Z THEN @1630
+C=A(M+X)+A(A*V+12)-((A(T*V+12))/X)-Y
+GOSUB @2090
+IF R<C THEN GOSUB @2380
+IF R>C THEN @1770
+D=(A(M+Y)*(K-A(T*V+9))*C)/(U*K)
+@1770
+IF D>Z THEN @1440
+PRINT "YOUR SPELL MISSED."
+PRINT
+GOTO @420
+@1810
+' NOT ENOUGH MP ROUTINE
+PRINT
+PRINT "YOU DON'T HAVE ENOUGH MP TO CAST THAT SPELL."
+GOTO @990
+@1850
+' CURE ROUTINE
+E=3
+IF A(M+3)>A(X) THEN @1810
+A(X)=A(X)-A(M+3)
+GOSUB @2380
+D=C+22*A(M+Y+E)
+D=INT(D*(S+(RND(Y)*N))/B)
+PRINT
+PRINT "YOU HAVE BEEN HEALED FOR";D;"HP."
+PRINT
+A(Z)=A(Z)+D
+IF A(Z)>A(Y) THEN A(Z)=A(Y)
+GOTO @420
+@1980
+' ITEM ROUTINE
+IF P=Z THEN PRINT
+IF P=Z THEN PRINT "YOU HAVE NO POTIONS."
+IF P=Z THEN @780
+A(Z)=A(Z)+G
+IF A(Z)>A(Y) THEN A(Z)=A(Y)
+P=P-Y
+PRINT
+PRINT "YOU HAVE BEEN HEALED FOR 100 HP."
+PRINT
+GOTO @420
+@2090
+' RANDOM 100 ROUTINE
+R=INT(RND(Y)*G)
+RETURN
+@2120
+' SHARED INPUT ROUTINE
+PRINT
+FOR I=Y TO X
+IF A(V*I)>Z THEN PRINT "(";I;")";" SOLDIER";I
+NEXT I
+PRINT "WHICH ENEMY DO YOU WANT TO TARGET?"
+PRINT "(0) TO GO BACK."
+@2190
+GET A$
+IF A$="" THEN @2190
+C=VAL(A$)
+IF C=Z THEN RETURN
+E=Z
+IF A(V*C)<=Z THEN E=N
+IF E=N THEN @2120
+T=C
+PRINT
+RETURN
+@2270
+' LUCKY HIT ROUTINE
+D=I/H
+RETURN
+@2300
+' RANDOM 65535 ROUTINE
+R=((RND(Y)*F)*O/F)+Y
+RETURN
+@2330
+' DING ROUTINE
+FOR J=Z TO G
+NEXT J
+PRINT CHR$(7)
+RETURN
+@2380
+' MAGIC DAMAGE ROUTINE
+C=Q*(A(8)+A(12))
+RETURN
+@2410
+' GAME OVER ROUTINE
+PRINT
+PRINT "GAME OVER"
+PRINT
+FOR I=Z TO Y
+GOSUB @2330
+NEXT I
+@2480
+PRINT
+PRINT "YOU WON";W;"TIMES."
+PRINT
+END
+#data
+314
+314
+54
+54
+38
+96
+24
+1
+21
+17
+6
+14
+6
+30
+30
+0
+0
+6
+1
+4
+1
+1
+1
+50
+4
+2
+30
+30
+0
+0
+6
+1
+4
+1
+1
+1
+50
+4
+2
+4
+8
+100
+5
+5
+255
+#enddata

@@ -27,8 +27,6 @@ BATLTEST
 
 All Commodore Versions:
 
-Note: VIC-20 requires a 3KB RAM Expansion
-
 Tape Version:
 
 LOAD
@@ -77,8 +75,7 @@ RUN
 
 Disk Version:
 
-LOAD"D1:BATLTEST.BAS"
-RUN
+Auto-booting
 
 TI 99/4A:
 
